@@ -3,6 +3,7 @@ import 'IconText.dart';
 
 void main() {
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: AboutMe(),
   ));
 }
@@ -25,18 +26,48 @@ class AboutMe extends StatelessWidget {
   Widget topBanner() {
     return Column(
       children: [
-        SizedBox(
-          height: 100.0,
+        Container(
+          height: 180.0,
+          child: Stack(
+            overflow: Overflow.visible,
+            children: [
+              Container(
+                height: 140.0,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Colors.blue, Colors.blue[900]],
+                    tileMode: TileMode.mirror,
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(width: 2.0, color: Colors.blue),
+                  ),
+                  child: CircleAvatar(
+                    radius: 50.0,
+                    backgroundImage: AssetImage('assets/user-picture.png'),
+                    backgroundColor: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         Text('NAME SURNAME',
             style: TextStyle(
-              color: Colors.red,
+              color: Colors.blue,
               fontSize: 30.0,
             )),
         Text(
           'PROFESSION',
           style: TextStyle(
-            color: Colors.red,
+            color: Colors.blue,
             fontSize: 18.0,
           ),
         ),
@@ -63,7 +94,7 @@ class AboutMe extends StatelessWidget {
     return Divider(
       height: 60.0,
       thickness: 2.0,
-      color: Colors.red,
+      color: Colors.blue,
     );
   }
 
@@ -72,12 +103,12 @@ class AboutMe extends StatelessWidget {
       Icon(
         Icons.location_on,
         size: 50.0,
-        color: Colors.red,
+        color: Colors.blue,
       ),
       Text(
         'Address, Street\nCAP: xxxxx\nCountry',
         style: TextStyle(
-          color: Colors.red,
+          color: Colors.blue,
           fontSize: 15.0,
         ),
         textAlign: TextAlign.center,

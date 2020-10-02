@@ -16,7 +16,7 @@ class IconText extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(20.0, 5.0, 10.0, 5.0),
           child: Container(
             decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+                BoxDecoration(shape: BoxShape.circle, color: Colors.blue),
             child: Padding(
               padding: EdgeInsets.all(5.0),
               child: Icon(
@@ -30,7 +30,7 @@ class IconText extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-            color: Colors.red,
+            color: Colors.blue,
             fontSize: 20.0,
             letterSpacing: 1.0,
           ),
