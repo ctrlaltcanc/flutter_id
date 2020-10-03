@@ -13,7 +13,7 @@ class IconText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(20.0, 5.0, 10.0, 5.0),
+          padding: EdgeInsets.fromLTRB(0.0, 5.0, 10.0, 5.0),
           child: Container(
             decoration:
                 BoxDecoration(shape: BoxShape.circle, color: Colors.blue),
