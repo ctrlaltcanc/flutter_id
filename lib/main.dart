@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'IconText.dart';
 
 void main() {
@@ -11,14 +12,16 @@ void main() {
 class AboutMe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([]);
+
     return Scaffold(
       body: OrientationBuilder(
-        builder: (context, orientation) {
-          return orientation == Orientation.portrait
-              ? _buildVerticalLayout()
-              : _buildHorizontalLayout();
-        },
-      ),
+          builder: (context, orientation) {
+            return orientation == Orientation.portrait
+                ? _buildVerticalLayout()
+                : _buildHorizontalLayout();
+          },
+        ),
     );
   }
 
