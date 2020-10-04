@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'IconText.dart';
 
 void main() {
@@ -27,12 +26,23 @@ class AboutMe extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        topBanner(Orientation.portrait),
-        nameAndProfession(),
-        myDivider(),
-        centerContacts(),
-        myDivider(),
-        bottomLocation(),
+        Expanded(
+          flex: 1,
+          child: topBanner(Orientation.portrait),
+        ),
+        Expanded(
+          flex: 3,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              nameAndProfession(),
+              myDivider(),
+              centerContacts(),
+              myDivider(),
+              bottomLocation(),
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -40,25 +50,31 @@ class AboutMe extends StatelessWidget {
   Widget _buildHorizontalLayout() {
     return Row(
       children: <Widget>[
-        topBanner(Orientation.landscape),
-        IntrinsicWidth(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              nameAndProfession(),
-              myDivider(),
-              IntrinsicHeight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    myVerticalDivider(),
-                    centerContacts(),
-                    myVerticalDivider(),
-                    bottomLocation(),
-                  ],
+        Expanded(
+          flex: 1,
+          child: topBanner(Orientation.landscape),
+        ),
+        Expanded(
+          flex: 4,
+          child: IntrinsicWidth(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                nameAndProfession(),
+                myDivider(),
+                IntrinsicHeight(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      myVerticalDivider(),
+                      centerContacts(),
+                      myVerticalDivider(),
+                      bottomLocation(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],
@@ -67,24 +83,24 @@ class AboutMe extends StatelessWidget {
 
   Widget topBanner(Orientation orientation) {
     return Container(
-      height: orientation == Orientation.portrait ? 180.0 : null,
-      width: orientation == Orientation.landscape ? 140.0 : null,
       child: Stack(
         overflow: Overflow.visible,
         children: [
-          Container(
-            height: orientation == Orientation.portrait ? 140.0 : null,
-            width: orientation == Orientation.landscape ? 100.0 : null,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: orientation == Orientation.portrait
-                    ? Alignment.topLeft
-                    : Alignment.bottomLeft,
-                end: orientation == Orientation.portrait
-                    ? Alignment.bottomRight
-                    : Alignment.topRight,
-                colors: [Colors.blue, Colors.blue[900]],
-                tileMode: TileMode.mirror,
+          FractionallySizedBox(
+            heightFactor: orientation == Orientation.portrait ? 0.8 : null,
+            widthFactor: orientation == Orientation.landscape ? 0.8 : null,
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: orientation == Orientation.portrait
+                      ? Alignment.topLeft
+                      : Alignment.bottomLeft,
+                  end: orientation == Orientation.portrait
+                      ? Alignment.bottomRight
+                      : Alignment.topRight,
+                  colors: [Colors.blue, Colors.blue[900]],
+                  tileMode: TileMode.mirror,
+                ),
               ),
             ),
           ),
