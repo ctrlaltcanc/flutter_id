@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class IconText extends StatelessWidget {
   final IconData icon;
   final String text;
+  final MaterialColor color;
 
-  IconText({this.icon, this.text});
+  IconText({this.icon, this.text, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class IconText extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(0.0, 5.0, 10.0, 5.0),
           child: Container(
             decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Colors.blue),
+                BoxDecoration(shape: BoxShape.circle, color: color),
             child: Padding(
               padding: EdgeInsets.all(5.0),
               child: Icon(
@@ -30,7 +31,7 @@ class IconText extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-            color: Colors.blue,
+            color: color,
             fontSize: 20.0,
             letterSpacing: 1.0,
           ),

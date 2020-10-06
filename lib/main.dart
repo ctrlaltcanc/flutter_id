@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_id/ContactInfo.dart';
 import 'IconText.dart';
 
 void main() {
@@ -10,6 +11,16 @@ void main() {
 }
 
 class AboutMe extends StatelessWidget {
+  ContactInfo contactInfo = ContactInfo(
+      name: 'NAME SURNAME',
+      profession: 'PROFESSION',
+      phoneNumber: '+00 1234567890',
+      email: 'name.company@gmail.com',
+      website: 'www.name.com',
+      adress: 'Address, Street\nCAP: xxxxx\nCountry',
+      color: Colors.deepOrange
+    );
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
@@ -101,7 +112,7 @@ class AboutMe extends StatelessWidget {
                   end: orientation == Orientation.portrait
                       ? Alignment.bottomRight
                       : Alignment.topRight,
-                  colors: [Colors.blue, Colors.blue[900]],
+                  colors: [contactInfo.color, contactInfo.color[900]],
                   tileMode: TileMode.mirror,
                 ),
               ),
@@ -114,7 +125,7 @@ class AboutMe extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(width: 2.0, color: Colors.blue),
+                border: Border.all(width: 2.0, color: contactInfo.color),
               ),
               child: CircleAvatar(
                 radius: 50.0,
@@ -132,16 +143,16 @@ class AboutMe extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'NAME SURNAME',
+          contactInfo.name,
           style: TextStyle(
-            color: Colors.blue,
+            color: contactInfo.color,
             fontSize: 30.0,
           ),
         ),
         Text(
-          'PROFESSION',
+          contactInfo.profession,
           style: TextStyle(
-            color: Colors.blue,
+            color: contactInfo.color,
             fontSize: 18.0,
           ),
         ),
@@ -157,9 +168,9 @@ class AboutMe extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            IconText(icon: Icons.phone, text: '+00 1234567890'),
-            IconText(icon: Icons.mail, text: 'name.company@gmail.com'),
-            IconText(icon: Icons.language, text: 'www.name.com'),
+            IconText(icon: Icons.phone, text: contactInfo.phoneNumber, color: contactInfo.color),
+            IconText(icon: Icons.mail, text: contactInfo.email, color: contactInfo.color),
+            IconText(icon: Icons.language, text: contactInfo.website, color: contactInfo.color),
           ],
         ),
       ],
@@ -172,7 +183,7 @@ class AboutMe extends StatelessWidget {
       thickness: 2.0,
       indent: 30.0,
       endIndent: 30.0,
-      color: Colors.blue,
+      color: contactInfo.color,
     );
   }
 
@@ -182,7 +193,7 @@ class AboutMe extends StatelessWidget {
       thickness: 2.0,
       indent: 30.0,
       endIndent: 30.0,
-      color: Colors.blue,
+      color: contactInfo.color,
     );
   }
 
@@ -194,12 +205,12 @@ class AboutMe extends StatelessWidget {
         Icon(
           Icons.location_on,
           size: 50.0,
-          color: Colors.blue,
+          color: contactInfo.color,
         ),
         Text(
-          'Address, Street\nCAP: xxxxx\nCountry',
+          contactInfo.adress,
           style: TextStyle(
-            color: Colors.blue,
+            color: contactInfo.color,
             fontSize: 15.0,
           ),
           textAlign: TextAlign.center,
